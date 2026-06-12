@@ -22,6 +22,9 @@ let state = {
 let sessionHistory = JSON.parse(localStorage.getItem('ft_history') || '[]');
 let preferences = JSON.parse(localStorage.getItem('ft_prefs') || '{}');
 
+// Restore sessionCount from history so it persists across page reloads
+state.sessionCount = sessionHistory.length + 1;
+
 // Apply saved preferences
 if (preferences.theme) {
   state.isDark = preferences.theme === 'dark';
@@ -704,6 +707,9 @@ function init() {
   updateProgressBar();
   updateModeLabel();
 
+  // Restore session label from persisted sessionCount
+  els.sessionLabel.textContent = `Session ${state.sessionCount}`;
+
   // Save mode/duration preference on change
   document.querySelectorAll('.mode-tab').forEach(t => {
     t.addEventListener('click', () => {
@@ -731,3 +737,4 @@ function init() {
 }
 
 init();
+
