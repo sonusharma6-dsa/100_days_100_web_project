@@ -623,6 +623,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
   }
 
+  // Re-render chart with any history restored from localStorage
+  if (bmiData.length > 0) {
+    bmiChart.update();
+  }
+
 });
 
 /* =========================================================
