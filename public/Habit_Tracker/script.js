@@ -186,13 +186,15 @@ document
 .getElementById("saveHabitBtn")
 .onclick = ()=>{
 
-const name =
-document
-.getElementById("habitName")
-.value;
+const nameInput = document.getElementById("habitName");
+const name = nameInput.value.trim();
 
-if(!name)
-return;
+if(!name) {
+  alert("Please enter a habit name.");
+  return;
+}
+
+const notesInput = document.getElementById("habitNotes");
 
 habits.push({
 
@@ -210,10 +212,7 @@ document.getElementById(
 "habitColor"
 ).value,
 
-notes:
-document.getElementById(
-"habitNotes"
-).value,
+notes: notesInput.value,
 
 streak:0,
 
@@ -224,6 +223,10 @@ completedToday:false
 saveHabits();
 
 renderHabits();
+
+// Clear fields
+nameInput.value = "";
+notesInput.value = "";
 
 document
 .getElementById("habitModal")

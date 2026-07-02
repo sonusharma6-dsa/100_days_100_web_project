@@ -140,8 +140,9 @@ flex-direction:column;
 gap:15px;
 }
 
-.dark{
-background:#111827;
+body.dark {
+  background: #111827 !important;
+  background-image: none !important;
 }
 
 .confetti{
